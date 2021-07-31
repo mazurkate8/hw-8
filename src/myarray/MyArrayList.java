@@ -10,8 +10,9 @@ public class MyArrayList<T> {
 
 
     public void add(T item) {
-        if(modCount == elementData.length-1)
-            resize(elementData.length*2);
+        if(modCount == elementData.length-1) {
+            resize(elementData.length * 2);
+        }
         elementData[modCount++] = item;
     }
 
@@ -20,12 +21,16 @@ public class MyArrayList<T> {
     }
 
     public void remove(int index) {
-        for (int i = index; i< modCount; i++)
-            elementData[i] = elementData[i+1];
-        elementData[modCount] = null;
-        modCount--;
-        if (elementData.length > DEFAULT_CAPACITY && modCount < elementData.length / CUT_RATE)
-            resize(elementData.length/2);
+        if(index >= 0 && index < elementData.length && elementData[index] != null  ) {
+            if (modCount - index >= 0) {
+                System.arraycopy(elementData, index + 1, elementData, index, modCount - index);
+            }
+            elementData[modCount] = null;
+            modCount--;
+            if (elementData.length > DEFAULT_CAPACITY && modCount < elementData.length / CUT_RATE) {
+                resize(elementData.length / 2);
+            }
+        }
     }
 
     public int size() {

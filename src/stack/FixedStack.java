@@ -1,22 +1,24 @@
 package stack;
 
-public class FixedStack implements Stack {
+import java.util.Arrays;
 
-    private int[] stk;
+public class FixedStack<E> implements Stack {
+
+    private E[] stk;
     private int top;
 
     public FixedStack( int size ) {
 	
-	stk = new int[ size ];
+	stk = (E[]) new Object[ size ];
 	top = -1;
 	
 	}
     
     @Override
-    public void push( int item ) {
+    public void push(Object item ) {
 	top++;
 	if ( top < stk.length ){ 
-          stk[ top ] = item;
+          stk[ top ] = (E) item;
 	}
 	else System.out.println("Stack is Full");
 
@@ -28,20 +30,19 @@ public class FixedStack implements Stack {
 	}
 	
     @Override
-    public int pop(){
-
-         int tmp =0;
+    public Object pop(){
+         E tmp;
 
 	 if ( !isEmpty() ){
 	    tmp = stk[ top ];
 	    System.out.println( "You POP element" + " - " + tmp );
 	
-	    stk[ top ] = 0;
+         stk[ top ] = null;
 	    top--;
 	    return tmp; 
             }
 	  else System.out.println( "ERROR stack is EMPTY" );
-	  return -1;
+	  return null;
 	}
     
     @Override
@@ -73,6 +74,14 @@ public class FixedStack implements Stack {
         top = -1;
     
     }
-
-
+/*
+*  Переопределила toString - для дженерика нужен буде етот метод для
+*  вывода елементов массива
+ */
+    @Override
+    public String toString() {
+        return "FixedStack{" +
+                "stk=" + Arrays.toString(stk) +
+                '}';
+    }
 }

@@ -1,13 +1,13 @@
 package stack;
 
 //package OOP;
-public interface Stack {
+public interface Stack<E> {
 
-	public void push(int item);
-	public int pop();
-	public void peek();
-	public void print();
-        public boolean isEmpty();
-        public boolean isFull();
-        public void clear();
+	void push(E item);
+	E pop();
+	void peek();
+	void print();
+    boolean isEmpty();
+    boolean isFull();
+    void clear();
 }
