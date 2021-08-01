@@ -1,4 +1,4 @@
-package mylinkedlist.structure;
+package utils;
 
 
 public interface List<T> {

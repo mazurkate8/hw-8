@@ -1,7 +1,8 @@
 package stack;
 
+import utils.Stack;
+
 import java.lang.reflect.Array;
-import java.util.Arrays;
 
 public class FixedStack<E> implements Stack<E> {
 

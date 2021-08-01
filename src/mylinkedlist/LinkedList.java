@@ -1,9 +1,8 @@
 package mylinkedlist;
 
 
-import mylinkedlist.structure.List;
+import utils.List;
 
-import java.util.NoSuchElementException;
 import java.util.Objects;
 
 

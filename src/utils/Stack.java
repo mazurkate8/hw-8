@@ -1,4 +1,4 @@
-package stack;
+package utils;
 
 //package OOP;
 public interface Stack<E> {
