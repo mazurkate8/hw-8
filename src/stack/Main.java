@@ -19,7 +19,7 @@ public class Main {
 
 	System.out.println( "1. Enter stack size" );
 	size = Integer.parseInt( reader.readLine() );
-	FixedStack stk = new FixedStack( size );
+	FixedStack stk = new FixedStack(Integer.class, size );
 
 	System.out.println( "Ok! Now you have stack by size" + " " + size );
 
