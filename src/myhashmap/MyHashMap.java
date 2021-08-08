@@ -9,6 +9,16 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
     private int size = 0;
     private float threshold;
 
+    public static void main(String[] args) {
+        MyHashMap<String, String> strings = new MyHashMap<>();
+        strings.put("a", "b");
+        System.out.println(strings.get("a"));
+        strings.put("c", "d");
+        System.out.println(strings.size());
+        strings.clear();
+        System.out.println(strings.size());
+    }
+
     public MyHashMap() {
         hashTable = new MapNode[16];
         threshold = hashTable.length * 0.75f;
@@ -121,6 +131,11 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
         int index = hash(key);
         if (index < hashTable.length &&
                 hashTable[index] != null) {
+
+            if(hashTable[index].getNodes().size() == 1) {
+                return hashTable[index].getNodes().get(0).getValue();
+            }
+
             List<MapNode<K, V>> list = hashTable[index].getNodes();
             for (MapNode<K, V> node : list) {
                 if (key.equals(node.getKey())) {
