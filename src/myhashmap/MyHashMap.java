@@ -22,7 +22,7 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
         }
 
         MapNode<K, V> newNode = new MapNode<>(key, value);
-        int index = newNode.hash();
+        int index = hash(key);
 
         if (hashTable[index] == null) {
             return simpleAdd(index, newNode);
@@ -102,10 +102,10 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
         }
 
         if (hashTable[index].getNodes().size() == 1) {
-            hashTable[index].getNodes().remove(0);
+            hashTable[index] = null;
             return true;
         }
-
+//Значит случилась коллизия и делаем обход всех елементов
         List<MapNode<K, V>> nodeList = hashTable[index].getNodes();
         for (MapNode<K, V> node : nodeList) {
             if (key.equals(node.getKey())) {
